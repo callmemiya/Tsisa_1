@@ -16,7 +16,7 @@ double func(double x) {
 int main() {
     double a = 1.5, b = 4;
     double e = 0.1;
-    double x1, x2;
+    double x1 = 1.5, x2 = 4;
     cout <<"1. Sequential search (The golden ratio method):" <<endl;
     cout <<setfill('-') <<setw(76) <<"-" <<endl;
     cout <<"| Start of the |  End of the  |  Length of   |              |              |" <<endl;
@@ -24,16 +24,15 @@ int main() {
     cout <<"|     (ak)     |     (bk)     |      (l)     |              |              |" <<endl;
     cout <<setfill('-') <<setw(76) <<"-" <<endl;
     while (fabs(b - a) > e) {
+        cout <<setfill(' ') <<"|" <<setw(14) <<fixed <<setprecision(5) <<a <<"|" <<setw(14) <<b <<"|" <<setw(14) <<abs(b-a) <<"|" <<setw(14) <<func(a) <<"|" <<setw(14) <<func(b) <<"|" <<endl;
         x1 = b - (b - a) / goldenRatio;
         x2 = a + (b - a) / goldenRatio;
-        cout <<setfill(' ') <<"|" <<setw(14) <<fixed <<setprecision(5) <<x1 <<"|" <<setw(14) <<x2 <<"|" <<setw(14) <<abs(b-a) <<"|" <<setw(14) <<func(x1) <<"|" <<setw(14) <<func(x2) <<"|" <<endl;
+        
         if (func(x1) <= func(x2) ) 
             b = x2;
         else a = x1;
     }
-    x1 = b - (b - a) / goldenRatio;
-    x2 = a + (b - a) / goldenRatio;
-    cout <<setfill(' ') <<"|" <<setw(14) <<fixed <<setprecision(5) <<x1 <<"|" <<setw(14) <<x2 <<"|" <<setw(14)  <<abs(b-a) <<"|";
+    cout <<setfill(' ') <<"|" <<setw(14) <<fixed <<setprecision(5) <<a <<"|" <<setw(14) <<b <<"|" <<setw(14)  <<abs(b-a) <<"|";
     if (b-a < e) cout <<"         l < epsilon         |" <<endl;
     cout <<setfill('-') <<setw(76) <<"-" <<endl;
     cout <<"Minimum is reached at x = "  <<fixed <<setprecision(3) << (a + b) / 2 <<" +- " <<(b-a)/2 <<endl;
